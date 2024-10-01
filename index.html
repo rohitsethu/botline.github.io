@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Voice Assistant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Interactive Site</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #00ff00;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #888;
+        }
+        #message {
+            margin-top: 20px;
+            color: #00ff00;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>AI Voice Assistant</h1>
-  <button onclick="startRecording()">Start Speaking</button>
-  <button onclick="speak('Hello, how can I assist you?')">Test Response</button>
-  
-  <script>
-    // Text-to-Speech (Output)
-    function speak(text) {
-      const speech = new SpeechSynthesisUtterance(text);
-      speechSynthesis.speak(speech);
-    }
 
-    // Speech Recognition (Input)
-    function startRecording() {
-      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = 'en-US';
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        console.log("You said:", transcript);
-        speak(`You said: ${transcript}`);
-        // Send the transcript to a Python backend for AI processing if needed
-      };
-      recognition.start();
-    }
-  </script>
+    <h1>Welcome to My Website!</h1>
+    <p>This is a simple site where you can interact with JavaScript in the background.</p>
+
+    <button onclick="showMessage()">Click me for a surprise!</button>
+
+    <div id="message"></div>
+
+    <script>
+        // JavaScript code to run in the background
+        function showMessage() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = "Hello! You clicked the button.";
+            messageDiv.style.color = "#ff0000";
+        }
+
+        // Example of a background JavaScript function (running on page load)
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("JavaScript is running in the background!");
+        });
+    </script>
+
 </body>
 </html>
+
